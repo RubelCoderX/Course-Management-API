@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import config from "./app/config";
 import router from "./app/routes";
+import globalErrorHandler from "./app/middleware/globalErrorHandler";
 const app = express();
 
 //parser
@@ -19,7 +20,6 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Course Management API");
 });
 
-// app.use(globalErrorHandler);
-// //not found
-// app.use(notFound);
+app.use(globalErrorHandler);
+
 export default app;
